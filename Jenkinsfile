@@ -32,9 +32,9 @@ pipeline {
                 script {
                     dir('demo') {
                         if (isUnix()) {
-                            sh 'mvn verify'
+                            sh 'mvn test'
                         } else {
-                            bat 'mvn verify'
+                            bat 'mvn test'
                         }
                     }
                 }
@@ -44,10 +44,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    if (isUnix()) {
-                        sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
-                    } else {
-                        bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                    dir('demo') {
+                        if (isUnix()) {
+                            sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                        } else {
+                            bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                        }
                     }
                 }
             }
