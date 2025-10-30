@@ -3,7 +3,7 @@ FROM openjdk:11-slim
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
-    libx11-6 libxext6 libxrender1 libxtst6 libxi6 libgtk-3-0 mesa-utils wget unzip xvfb \
+    libx11-6 libxext6 libxrender1 libxtst6 libxi6 libgtk-3-0 mesa-utils wget unzip \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /javafx-sdk \
@@ -14,6 +14,7 @@ RUN mkdir -p /javafx-sdk \
 
 # Copy your fat JAR
 COPY target/demo-1.0-SNAPSHOT.jar app.jar
+ENV DISPLAY=host.docker.internal:0.0
 
-# Start Xvfb and run JavaFX app
-CMD bash -c "Xvfb :99 -screen 0 1024x768x16 & export DISPLAY=:99 && java --module-path /javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -jar app.jar"
+# Run JavaFX app
+CMD ["java", "--module-path", "/javafx-sdk/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "app.jar"]
