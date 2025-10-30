@@ -13,7 +13,7 @@ RUN mkdir -p /javafx-sdk \
     && rm -rf /javafx-sdk/javafx-sdk-13.0.2 javafx.zip
 
 # Copy your fat JAR
-COPY target/demo-1.0-SNAPSHOT-shaded.jar app.jar
+COPY target/demo-1.0-SNAPSHOT.jar app.jar
 ENV DISPLAY=host.docker.internal:0.0
 
 # Run JavaFX app
