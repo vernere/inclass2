@@ -118,7 +118,7 @@ public class PrimaryController {
         }
         lblWeight.setText(r.getString("lblWeight.text"));
         lblHeight.setText(r.getString("lblHeight.text"));
-        lblResult.setText(r.getString("lblResult.text") + bmiStatus);
+        lblResult.setText(r.getString("lblResult.text") + String.format("%.2f", bmiStatus));
         btnCalculate.setText(r.getString("btnCalculate.text"));
 
         button1.setText(r.getString("Button1"));
