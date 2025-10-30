@@ -13,7 +13,7 @@ RUN mkdir -p /javafx-sdk \
     && rm -rf /javafx-sdk/javafx-sdk-13.0.2 javafx.zip
 
 # Copy your fat JAR
-COPY target/demo-1.0-SNAPSHOT-shaded.jar app.jar
+COPY target/demo-1.0-SNAPSHOT.jar app.jar
 
 # Start Xvfb and run JavaFX app
 CMD bash -c "Xvfb :99 -screen 0 1024x768x16 & export DISPLAY=:99 && java --module-path /javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -jar app.jar"
