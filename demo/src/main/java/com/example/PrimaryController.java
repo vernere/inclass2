@@ -62,9 +62,9 @@ public class PrimaryController {
             height = height / 100;
             double bmi = weight / (height * height);
             bmiStatus = bmi;
-            lblResult.setText(String.format("%.2f", bmi));
+            lblResult.setText(r.getString("lblResult.text") + " " + String.format("%.2f", bmi));
         } catch (NumberFormatException e) {
-            lblResult.setText("Please enter valid numbers");
+            lblResult.setText(r.getString("InvalidInput"));
         }
     }
 
