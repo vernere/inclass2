@@ -1,7 +1,6 @@
 package com.example;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.Map;
@@ -13,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 public class PrimaryController {
     Locale currentLocale;
