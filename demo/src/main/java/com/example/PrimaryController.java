@@ -17,6 +17,12 @@ public class PrimaryController {
     double bmiStatus;
 
     @FXML
+    private void initialize() {
+        local = new Locale("en", "US");
+        changeLang(local);
+    }
+
+    @FXML
     private Label lblWeight;
 
     @FXML
@@ -47,11 +53,6 @@ public class PrimaryController {
     private Button button4;
     @FXML
     private Button btnCalculate;
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
 
     @FXML
     private void onCalculateClick() {
@@ -97,7 +98,7 @@ public class PrimaryController {
     private void changeLang(Locale local) {
         r = ResourceBundle.getBundle("MessagesBundle", local);
         switch (local.getCountry()) {
-            case "us":
+            case "US":
                 ZoneId zi = ZoneId.of("America/New_York");
                 lblLocalTime.setText(r.getString("CurrentTime") + java.time.LocalTime.now(zi));
                 break;
@@ -118,7 +119,7 @@ public class PrimaryController {
         }
         lblWeight.setText(r.getString("lblWeight.text"));
         lblHeight.setText(r.getString("lblHeight.text"));
-        lblResult.setText(r.getString("lblResult.text") + String.format("%.2f", bmiStatus));
+        lblResult.setText(r.getString("lblResult.text") + " " + String.format("%.2f", bmiStatus));
         btnCalculate.setText(r.getString("btnCalculate.text"));
 
         button1.setText(r.getString("Button1"));
